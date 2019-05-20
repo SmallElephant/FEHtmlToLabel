@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UILabel+Html.h"
+#import "UIColor+ColorHex.h"
 
 @interface ViewController ()
 
@@ -27,7 +28,24 @@
     [self loadHtmlLabel1];
     [self loadHtmlLabel2];
     [self loadHtmlLabel3];
+    [self testheight];
+    [self isHtmlString:@"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>"];
 }
+
+- (void)isHtmlString:(NSString *)text {
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<(.|\n)*?>" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSArray *matches = [regex matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    for (NSTextCheckingResult *match in matches) {
+        //NSRange matchRange = [match range]; //获取所匹配的最长字符串
+        for (int i = 0; i < match.numberOfRanges; i++) {
+            NSRange matchRange = [match rangeAtIndex:i];
+            NSString *matchString = [text substringWithRange:matchRange];
+            NSLog(@"index:%@, %@", @(i), matchString);
+        }
+    }
+}
+
 
 -(void)loadHtmlLabel1 {
     NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
@@ -50,6 +68,79 @@
      [self.view addSubview:self.label3];
 }
 
+- (void)testheight {
+    CGFloat height1 = [self calutorHeight:@"是否具有良好的心理素质，是考试取得好成绩的条件之一。"];
+    CGFloat height2 = [self calutorHeight:@"为了防止不再出现这样的问题，我们制定了具体的改进措施。"];
+    CGFloat height3 = [self calutorHeight:@"各地中小学完善和建立了校园安全预防工作机制。"];
+    NSLog(@"高度1---%f--高度2---%f---高度3---%f",height1,height2,height3);
+    
+    UILabel *label = [self sizeLabel:@"是否具有良好的心理素质，是考试取得好成绩的条件之一。"];
+    [self.view addSubview:label];
+    
+    UILabel *label2= [self sizeLabel:@"为了防止不再出现这样的问题，我们制定了具体的改进措施。"];
+//    [self.view addSubview:label];
+    
+    UILabel *label3 = [self sizeLabel:@"各地中小学完善和建立了校园安全预防工作机制。"];
+    
+    // 20个字
+    CGFloat height4 = [self requiredHeight:@"是否具有良好的心理素质是考试取得好成绩的"];
+    // 22个字
+    CGFloat height5 = [self requiredHeight:@"是否具有良好的心理素质是考试取得好成绩的条件"];
+    // 23个字
+    CGFloat height6 = [self requiredHeight:@"是否具有良好的心理素质是考试取得好成绩的条件之一"];
+    // 24个字
+    CGFloat height7 = [self requiredHeight:@"是否具有良好的心理素质是考试取得好成绩的条件之一"];
+    NSLog(@"高度4---%f--高度5---%f---高度6---%f--高度7---%f",height4,height5,height6,height7);
+}
+
+
+
+- (UILabel *)sizeLabel:(NSString *)text {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 520, 410, 50)];
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.textAlignment = NSTextAlignmentLeft;
+    //    label.text = @"各地中小学完善和建立了校园安全预防工作机制。";
+    label.text = text;
+    label.font = [UIFont systemFontOfSize:18];
+    label.backgroundColor = [UIColor redColor];
+    CGSize labelSize = [label sizeThatFits:CGSizeMake(MAXFLOAT, 23)];
+    CGFloat height4 = ceil(labelSize.height) + 1;
+    NSLog(@"高度3--%f",height4);
+    NSLog(@"text:%@---size:%@",text,NSStringFromCGSize(labelSize));
+    return label;
+}
+
+- (CGFloat)requiredHeight:(NSString*)labelText {
+    
+    UIFont *font = [UIFont systemFontOfSize:18];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 415, CGFLOAT_MAX)];
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.font = font;
+    label.text = labelText;
+     CGSize labelSize = [label sizeThatFits:CGSizeMake(415, CGFLOAT_MAX)];
+    NSLog(@"label size:%@",NSStringFromCGSize(labelSize));
+    return labelSize.height;
+}
+
+- (CGFloat)calutorHeight:(NSString *)text {
+    
+    // 段落设置与实际显示的 Label 属性一致 采用 NSMutableParagraphStyle 设置Nib 中 Label 的相关属性传入到 NSAttributeString 中计算；
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.lineBreakMode = NSLineBreakByWordWrapping;
+    style.alignment = NSTextAlignmentLeft;
+    
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSParagraphStyleAttributeName:style}];
+    
+    CGSize size =  [string boundingRectWithSize:CGSizeMake(415, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    NSLog(@" size =  %@", NSStringFromCGSize(size));
+    
+    // 并不是高度计算不对，我估计是计算出来的数据是 小数，在应用到布局的时候稍微差一点点就不能保证按照计算时那样排列，所以为了确保布局按照我们计算的数据来，就在原来计算的基础上 取ceil值，再加1；
+    CGFloat height = ceil(size.height) + 1;
+    return height;
+}
+
 # pragma mark Accessors
 
 - (UILabel *)label1 {
@@ -69,11 +160,10 @@
 - (UILabel *)label2 {
     if (!_label2) {
         _label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 250, 300, 100)];
-        _label2.textColor = [UIColor blackColor];
+        _label2.textColor = [UIColor colorWithHexString:@"3565EA"];
         _label2.backgroundColor = [UIColor whiteColor];
         _label2.textAlignment = NSTextAlignmentCenter;
         _label2.numberOfLines = 0;
-        //怎么设置字号都没有效果
         _label2.font = [UIFont fontWithName:@"PingFangSC" size:20];
     }
     return _label2;
@@ -86,7 +176,6 @@
         _label3.backgroundColor = [UIColor whiteColor];
         _label3.textAlignment = NSTextAlignmentCenter;
         _label3.numberOfLines = 0;
-        //怎么设置字号都没有效果
         _label3.font = [UIFont fontWithName:@"PingFangSC" size:20];
     }
     return _label3;

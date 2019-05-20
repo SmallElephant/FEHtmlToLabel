@@ -11,9 +11,9 @@
 @implementation UILabel (Html)
 
 - (void)loadHtmlWithStyle:(NSString *)string {
-    string = [string stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;}</style>",
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;color: %@}</style>",
                                               self.font.fontName,
-                                              self.font.pointSize]];
+                                              self.font.pointSize, @"#3565EA"]];
     self.attributedText = [[NSAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding]
                                                            options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                                                                      NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
@@ -22,7 +22,7 @@
 }
 
 - (void)loadHtmlWithSpan:(NSString *)string {
-    string = [NSString stringWithFormat:@"<span style=\"font-family: '%@'; font-size: %f\">%@</span>", self.font.fontName, self.font.pointSize, string];
+    string = [NSString stringWithFormat:@"<span style=\"font-family: '%@'; font-size: %f;color:%@\">%@</span>", self.font.fontName, self.font.pointSize, @"#3565EA",string];
     self.attributedText = [[NSAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding]
                                                            options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                                                                      NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}

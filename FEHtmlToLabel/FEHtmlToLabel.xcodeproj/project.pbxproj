@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81153F4228E93480053B4D7 /* UIColor+ColorHex.m in Sources */ = {isa = PBXBuildFile; fileRef = A81153F3228E93480053B4D7 /* UIColor+ColorHex.m */; };
 		A816B110228D6F0F00628AFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B10F228D6F0F00628AFF /* AppDelegate.m */; };
 		A816B113228D6F0F00628AFF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B112228D6F0F00628AFF /* ViewController.m */; };
 		A816B116228D6F0F00628AFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A816B114228D6F0F00628AFF /* Main.storyboard */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A81153F2228E93480053B4D7 /* UIColor+ColorHex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorHex.h"; sourceTree = "<group>"; };
+		A81153F3228E93480053B4D7 /* UIColor+ColorHex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorHex.m"; sourceTree = "<group>"; };
 		A816B10B228D6F0F00628AFF /* FEHtmlToLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FEHtmlToLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A816B10E228D6F0F00628AFF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A816B10F228D6F0F00628AFF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				A816B119228D6F1000628AFF /* LaunchScreen.storyboard */,
 				A816B11C228D6F1000628AFF /* Info.plist */,
 				A816B11D228D6F1000628AFF /* main.m */,
+				A81153F2228E93480053B4D7 /* UIColor+ColorHex.h */,
+				A81153F3228E93480053B4D7 /* UIColor+ColorHex.m */,
 			);
 			path = FEHtmlToLabel;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A816B113228D6F0F00628AFF /* ViewController.m in Sources */,
+				A81153F4228E93480053B4D7 /* UIColor+ColorHex.m in Sources */,
 				A816B11E228D6F1000628AFF /* main.m in Sources */,
 				A816B110228D6F0F00628AFF /* AppDelegate.m in Sources */,
 				A816B142228D6F2C00628AFF /* UILabel+Html.m in Sources */,
