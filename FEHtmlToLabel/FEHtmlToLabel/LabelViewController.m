@@ -1,18 +1,16 @@
 //
-//  ViewController.m
+//  LabelViewController.m
 //  FEHtmlToLabel
 //
-//  Created by FlyElephant on 2019/5/16.
+//  Created by FlyElephant on 2019/5/22.
 //  Copyright © 2019 FlyElephant. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LabelViewController.h"
 #import "UILabel+Html.h"
 #import "UIColor+ColorHex.h"
-#import "LabelViewController.h"
-#import "WebViewController.h"
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface LabelViewController ()
 
 @property (strong, nonatomic) UILabel *label1;
 
@@ -20,63 +18,23 @@
 
 @property (strong, nonatomic) UILabel *label3;
 
-@property (strong, nonatomic) UITableView *tableView;
-
-@property (strong, nonatomic) NSMutableArray *dataList;
-
 @end
 
-@implementation ViewController
+@implementation LabelViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    [self loadHtmlLabel1];
-//    [self loadHtmlLabel2];
-//    [self loadHtmlLabel3];
-//    [self testheight];
-//    [self isHtmlString:@"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>"];
-//
-//    NSString *res = [self stringByStrippingHTML:@"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>"];
-//    NSLog(@"最终的结果:%@",res);
-    
+        [self loadHtmlLabel1];
+    //    [self loadHtmlLabel2];
+    //    [self loadHtmlLabel3];
+    //    [self testheight];
+    //    [self isHtmlString:@"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>"];
+    //
+    //    NSString *res = [self stringByStrippingHTML:@"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>"];
+    //    NSLog(@"最终的结果:%@",res);
+    self.view.backgroundColor = [UIColor whiteColor];
 //    [self loadWebView];
-    [self.view addSubview:self.tableView];
-    self.tableView.frame = CGRectMake(0, 0, 414, 300);
-    [self.dataList addObject:@"UILabel 加载Html"];
-    [self.dataList addObject:@"UIWebview 加载Html"];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifer = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (!cell) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = self.dataList[indexPath.row];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        LabelViewController *controller = [[LabelViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-    if (indexPath.row == 1) {
-        WebViewController *controller = [[WebViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 45;
 }
 
 - (void)loadWebView {
@@ -101,10 +59,11 @@
 }
 
 -(void)loadHtmlLabel1 {
-//    NSString *htmlStr = @"<p>回到故乡，见到亲人，在外漂泊多年的他终于<strong>忍俊不禁</strong>，留下了心酸的泪水。</p>";
-//    NSString *htmlStr = @"<p>酿</strong>造（ni&agrave;ng） 苍<strong>劲</strong>（j&igrave;ng） <strong>歼</strong>灭（qiān） 枯<strong>涸</strong>（h&eacute;）</p>";
-    NSString *htmlStr = @"洗漱穿戴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 谈笑风生";
-    
+    //    NSString *htmlStr = @"<p>回到故乡，见到亲人，在外漂泊多年的他终于<strong>忍俊不禁</strong>，留下了心酸的泪水。</p>";
+    //    NSString *htmlStr = @"<p>酿</strong>造（ni&agrave;ng） 苍<strong>劲</strong>（j&igrave;ng） <strong>歼</strong>灭（qiān） 枯<strong>涸</strong>（h&eacute;）</p>";
+//    NSString *htmlStr = @"洗漱穿戴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 谈笑风生";
+//    NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
+    NSString *htmlStr = @"<p>回到故乡</p>";
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding) };
     NSData *data = [htmlStr dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
@@ -115,13 +74,13 @@
     [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:attRange];
     attLabel.attributedText = attStr;
     
-    CGSize attSize1 = [attLabel sizeThatFits:CGSizeMake(468, MAXFLOAT)];
+    CGSize attSize1 = [attLabel sizeThatFits:CGSizeMake(414, MAXFLOAT)];
     NSLog(@"attstring1标签的高度:%f",attSize1.height);
     
     CGSize attSize2 =  [attStr boundingRectWithSize:CGSizeMake(468, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     NSLog(@"attstring2标签的高度:%f",attSize2.height);
     [self.view addSubview:attLabel];
-//    [self.label1 loadHtmlWithStyle:htmlStr];
+    //    [self.label1 loadHtmlWithStyle:htmlStr];
     [self.label1 loadHtmlWithSpan:htmlStr];
     CGSize labelSize = [self.label1 sizeThatFits:CGSizeMake(468, MAXFLOAT)];
     NSLog(@"标签的高度:%f",labelSize.height);
@@ -145,7 +104,7 @@
 -(void)loadHtmlLabel3 {
     NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
     [self.label3 loadHtmlWithSpan:htmlStr];
-     [self.view addSubview:self.label3];
+    [self.view addSubview:self.label3];
 }
 
 - (void)testheight {
@@ -158,7 +117,7 @@
     [self.view addSubview:label];
     
     UILabel *label2= [self sizeLabel:@"为了防止不再出现这样的问题，我们制定了具体的改进措施。"];
-//    [self.view addSubview:label];
+    //    [self.view addSubview:label];
     
     UILabel *label3 = [self sizeLabel:@"各地中小学完善和建立了校园安全预防工作机制。"];
     
@@ -199,7 +158,7 @@
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.font = font;
     label.text = labelText;
-     CGSize labelSize = [label sizeThatFits:CGSizeMake(415, CGFLOAT_MAX)];
+    CGSize labelSize = [label sizeThatFits:CGSizeMake(415, CGFLOAT_MAX)];
     NSLog(@"label size:%@",NSStringFromCGSize(labelSize));
     return labelSize.height;
 }
@@ -228,10 +187,10 @@
         _label1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 414, 83)];
         _label1.textColor = [UIColor blackColor];
         _label1.backgroundColor = [UIColor redColor];
-//        _label1.textAlignment = NSTextAlignmentCenter;
+        //        _label1.textAlignment = NSTextAlignmentCenter;
         _label1.numberOfLines = 0;
         // 直接设置字体无效
-         _label1.font = [UIFont fontWithName:@"PingFangSC" size:12];
+        _label1.font = [UIFont fontWithName:@"PingFangSC" size:12];
     }
     return _label1;
 }
@@ -261,24 +220,6 @@
     return _label3;
 }
 
-- (UITableView *)tableView {
-    if (!_tableView){
-        _tableView=[[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.dataSource=self;
-        _tableView.delegate=self;
-        _tableView.scrollEnabled = NO;
-        _tableView.backgroundColor = [UIColor clearColor];
-        [_tableView  setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        
-    }
-    return _tableView;
-}
-
-- (NSMutableArray *)dataList {
-    if (!_dataList) {
-        _dataList = [[NSMutableArray alloc] init];
-    }
-    return _dataList;
-}
 
 @end
+

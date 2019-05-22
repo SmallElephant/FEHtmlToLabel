@@ -17,6 +17,8 @@
 		A816B128228D6F1000628AFF /* FEHtmlToLabelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B127228D6F1000628AFF /* FEHtmlToLabelTests.m */; };
 		A816B133228D6F1000628AFF /* FEHtmlToLabelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B132228D6F1000628AFF /* FEHtmlToLabelUITests.m */; };
 		A816B142228D6F2C00628AFF /* UILabel+Html.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B141228D6F2C00628AFF /* UILabel+Html.m */; };
+		A8C6053C2294DAEB00F3AB7C /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */; };
+		A8C6053F2294DB1000F3AB7C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C6053E2294DB1000F3AB7C /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		A816B134228D6F1000628AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A816B140228D6F2C00628AFF /* UILabel+Html.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Html.h"; sourceTree = "<group>"; };
 		A816B141228D6F2C00628AFF /* UILabel+Html.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Html.m"; sourceTree = "<group>"; };
+		A8C6053A2294DAEB00F3AB7C /* LabelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
+		A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
+		A8C6053D2294DB1000F3AB7C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		A8C6053E2294DB1000F3AB7C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,10 @@
 				A816B11D228D6F1000628AFF /* main.m */,
 				A81153F2228E93480053B4D7 /* UIColor+ColorHex.h */,
 				A81153F3228E93480053B4D7 /* UIColor+ColorHex.m */,
+				A8C6053A2294DAEB00F3AB7C /* LabelViewController.h */,
+				A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */,
+				A8C6053D2294DB1000F3AB7C /* WebViewController.h */,
+				A8C6053E2294DB1000F3AB7C /* WebViewController.m */,
 			);
 			path = FEHtmlToLabel;
 			sourceTree = "<group>";
@@ -273,10 +283,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A816B113228D6F0F00628AFF /* ViewController.m in Sources */,
+				A8C6053F2294DB1000F3AB7C /* WebViewController.m in Sources */,
 				A81153F4228E93480053B4D7 /* UIColor+ColorHex.m in Sources */,
 				A816B11E228D6F1000628AFF /* main.m in Sources */,
 				A816B110228D6F0F00628AFF /* AppDelegate.m in Sources */,
 				A816B142228D6F2C00628AFF /* UILabel+Html.m in Sources */,
+				A8C6053C2294DAEB00F3AB7C /* LabelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FEHtmlToLabel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,6 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FEHtmlToLabel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
