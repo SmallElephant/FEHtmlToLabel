@@ -11,6 +11,7 @@
 #import "UIColor+ColorHex.h"
 #import "LabelViewController.h"
 #import "WebViewController.h"
+#import "DivWebViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -44,11 +45,12 @@
     [self.view addSubview:self.tableView];
     self.tableView.frame = CGRectMake(0, 0, 414, 300);
     [self.dataList addObject:@"UILabel 加载Html"];
+    [self.dataList addObject:@"WKWebview 加载Html"];
     [self.dataList addObject:@"UIWebview 加载Html"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,6 +74,10 @@
     if (indexPath.row == 1) {
         WebViewController *controller = [[WebViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
+    }
+    if (indexPath.row == 2) {
+        DivWebViewController *controller = [[DivWebViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES]; 
     }
 }
 

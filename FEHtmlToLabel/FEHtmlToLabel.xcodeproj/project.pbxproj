@@ -19,6 +19,7 @@
 		A816B142228D6F2C00628AFF /* UILabel+Html.m in Sources */ = {isa = PBXBuildFile; fileRef = A816B141228D6F2C00628AFF /* UILabel+Html.m */; };
 		A8C6053C2294DAEB00F3AB7C /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */; };
 		A8C6053F2294DB1000F3AB7C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C6053E2294DB1000F3AB7C /* WebViewController.m */; };
+		A8C60542229524D200F3AB7C /* DivWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C60541229524D200F3AB7C /* DivWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
 		A8C6053D2294DB1000F3AB7C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		A8C6053E2294DB1000F3AB7C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		A8C60540229524D200F3AB7C /* DivWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DivWebViewController.h; sourceTree = "<group>"; };
+		A8C60541229524D200F3AB7C /* DivWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DivWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				A8C6053B2294DAEB00F3AB7C /* LabelViewController.m */,
 				A8C6053D2294DB1000F3AB7C /* WebViewController.h */,
 				A8C6053E2294DB1000F3AB7C /* WebViewController.m */,
+				A8C60540229524D200F3AB7C /* DivWebViewController.h */,
+				A8C60541229524D200F3AB7C /* DivWebViewController.m */,
 			);
 			path = FEHtmlToLabel;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A816B113228D6F0F00628AFF /* ViewController.m in Sources */,
+				A8C60542229524D200F3AB7C /* DivWebViewController.m in Sources */,
 				A8C6053F2294DB1000F3AB7C /* WebViewController.m in Sources */,
 				A81153F4228E93480053B4D7 /* UIColor+ColorHex.m in Sources */,
 				A816B11E228D6F1000628AFF /* main.m in Sources */,

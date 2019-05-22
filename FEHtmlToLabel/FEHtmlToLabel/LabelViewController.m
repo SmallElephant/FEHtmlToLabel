@@ -62,8 +62,8 @@
     //    NSString *htmlStr = @"<p>回到故乡，见到亲人，在外漂泊多年的他终于<strong>忍俊不禁</strong>，留下了心酸的泪水。</p>";
     //    NSString *htmlStr = @"<p>酿</strong>造（ni&agrave;ng） 苍<strong>劲</strong>（j&igrave;ng） <strong>歼</strong>灭（qiān） 枯<strong>涸</strong>（h&eacute;）</p>";
 //    NSString *htmlStr = @"洗漱穿戴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 谈笑风生";
-//    NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
-    NSString *htmlStr = @"<p>回到故乡</p>";
+    NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
+//    NSString *htmlStr = @"<p>回到故乡</p>";
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding) };
     NSData *data = [htmlStr dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
@@ -82,8 +82,8 @@
     [self.view addSubview:attLabel];
     //    [self.label1 loadHtmlWithStyle:htmlStr];
     [self.label1 loadHtmlWithSpan:htmlStr];
-    CGSize labelSize = [self.label1 sizeThatFits:CGSizeMake(468, MAXFLOAT)];
-    NSLog(@"标签的高度:%f",labelSize.height);
+    CGSize labelSize = [self.label1 sizeThatFits:CGSizeMake(414, MAXFLOAT)];
+    NSLog(@"UILabel的内容:%@----标签的高度:%f",htmlStr,labelSize.height);
     [self.view addSubview:self.label1];
 }
 
