@@ -62,8 +62,9 @@
     //    NSString *htmlStr = @"<p>回到故乡，见到亲人，在外漂泊多年的他终于<strong>忍俊不禁</strong>，留下了心酸的泪水。</p>";
     //    NSString *htmlStr = @"<p>酿</strong>造（ni&agrave;ng） 苍<strong>劲</strong>（j&igrave;ng） <strong>歼</strong>灭（qiān） 枯<strong>涸</strong>（h&eacute;）</p>";
 //    NSString *htmlStr = @"洗漱穿戴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 谈笑风生";
-    NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
+//    NSString *htmlStr = @"<p>①恋恋不<strong>舍</strong>（舍弃） &nbsp;&nbsp;②<strong>鸿雁</strong>（书信）传书&nbsp; &nbsp; &nbsp; ③万<strong>籁</strong>（声响）俱寂</p>";
 //    NSString *htmlStr = @"<p>回到故乡</p>";
+       NSString *htmlStr = @" <p><strong>喘</strong>息(chuǎn)&nbsp;&nbsp; <strong>凝</strong>重(n&iacute;ng)&nbsp; &nbsp; &nbsp;勉<strong>强</strong>(qi&aacute;ng)&nbsp;&nbsp; <strong>倾</strong>盆大雨(qīng)</p>";
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute :@(NSUTF8StringEncoding) };
     NSData *data = [htmlStr dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
@@ -77,10 +78,10 @@
     CGSize attSize1 = [attLabel sizeThatFits:CGSizeMake(414, MAXFLOAT)];
     NSLog(@"attstring1标签的高度:%f",attSize1.height);
     
-    CGSize attSize2 =  [attStr boundingRectWithSize:CGSizeMake(468, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    CGSize attSize2 =  [attStr boundingRectWithSize:CGSizeMake(414, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     NSLog(@"attstring2标签的高度:%f",attSize2.height);
     [self.view addSubview:attLabel];
-    //    [self.label1 loadHtmlWithStyle:htmlStr];
+//    [self.label1 loadHtmlWithStyle:htmlStr];
     [self.label1 loadHtmlWithSpan:htmlStr];
     CGSize labelSize = [self.label1 sizeThatFits:CGSizeMake(414, MAXFLOAT)];
     NSLog(@"UILabel的内容:%@----标签的高度:%f",htmlStr,labelSize.height);
